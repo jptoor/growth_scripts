@@ -10,7 +10,15 @@ Filters:
 3. 9am-7pm EST
 
 
-If you're getting a permissions error, 
+If you're getting a permissions error, you may need to update your appsscript.json to include:
+
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/calendar",
+    "https://www.googleapis.com/auth/calendar.readonly",
+    "https://www.google.com/calendar/feeds",
+    "https://www.googleapis.com/auth/spreadsheets.currentonly",
+    "https://www.googleapis.com/auth/spreadsheets"
+  ],
 
 
 
