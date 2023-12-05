@@ -1,3 +1,22 @@
+/* 
+How to use:
+1. Create a new Google Sheet in the account with the calendar you want to reference. I had all my personal events copied to main calendar so I didn't need to check multiple calendars.
+2. You'll see a new menu item in the tool bar for "Calendaring", and a function for "Get Calendar Slots'
+3. This write your next 2 complete business weeks of availability to a spreadsheet in EST & PST
+
+Filters:
+1. Business Days
+2. It only includes contiguous blocks > 1 hour, to avoid multiple 30 minute options.
+3. 9am-7pm EST
+
+
+If you're getting a permissions error, 
+
+
+
+*/
+
+
 function getCalendarSlots() {
   var calendar = CalendarApp.getDefaultCalendar();
   var timeZone = calendar.getTimeZone();
@@ -5,7 +24,7 @@ function getCalendarSlots() {
   var start = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 9, 0, 0); // Tomorrow at 9 AM
   var end = new Date(start);
   end.setDate(end.getDate() + 7 - end.getDay() + 6); // Through the next complete week
-  end.setHours(17, 0, 0, 0); // Until 5 PM of the last day
+  end.setHours(19, 0, 0, 0); // Until 5 PM of the last day
 
   var events = calendar.getEvents(start, end);
   var slots = findFreeSlots(events, start, end, timeZone);
